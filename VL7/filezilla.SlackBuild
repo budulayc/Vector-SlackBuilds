@@ -292,7 +292,7 @@ find . | xargs file | grep "shared object" | grep ELF | cut -f 1 -d : | xargs st
 echo "Finding dependencies..."
 ADD="$ADDRB" EXCLUDE="$EXRB" requiredbuilder -v -y -s $RELEASEDIR $PKG
 echo "Creating package $NAME-$VERSION-$ARCH-$BUILD.tlz"
-makepkg -l y -c n $RELEASEDIR/$NAME-$VERSION-$ARCH-$BUILD.tlz
+makepkg -l y -c n $RELEASEDIR/$NAME-$VERSION-$ARCH-$BUILD.txz
 
 cd $CWD
 echo "Cleaning up temp files..." && rm -rf $TMP
