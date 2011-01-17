@@ -1,37 +1,56 @@
 #!/bin/bash
+# upload-0.1 script by budulay
+# Archives and uploads package data from the upload directory to SlackBuild repository.
+# Intended to be run from Vector-SlackBuilds/tools directory
+# You are free to use, change and distrubute this to your liking, but I make no guarantees
+# that it will work as intended or at all and that it will not harm your system.
+# So if suddenly earth starts shaking, or nukes show up on the horizon, you have been warned.
 
+
+#Accept command line input
 PACKAGES=("$@")
 
+#Establish "root" directory
 cd ..
 RT=$PWD
 
-echo "$@"
-
+#For every argument from command line:
 for NAME in ${PACKAGES[@]}
 do
 	cd $RT/uploads
 	
+	#Check if a directory specified from command line exist
 	if [ -d $NAME ]
 	then
+		#If there is already a package in archives, move it to old and remove from data
+		#TODO: use git to upload old to repository
 		if [ -f $RT/VL7/archives/$NAME.tar.gz ]
 		then
 			mv $RT/VL7/archives/$NAME.tar.gz $RT/VL7/old/$NAME-old.tar.gz
 			rm -R $RT/VL7/data/$NAME
 		fi
 
+		#Compress package into tarball, move it to archives; move package to data
 		tar -cvf - $NAME | gzip -c > $NAME.tar.gz
 		mv $NAME $RT/VL7/data
 		mv $NAME.tar.gz $RT/VL7/archives
+		
 		cd $RT
+		
+		#Add package to git's list of tracked files
 		git add VL7/data/$NAME/* VL7/archives/$NAME.tar.gz
+
+		#Add package name to the commit message
 		MESSAGE=$MESSAGE" "$NAME
 	else
 		echo "No directory $NAME in uploads..."
 	fi
 done
 
+#commit
 git commit -m "$MESSAGE"
-echo "done commit"
+
+#upload
 git push origin master
 
 
