@@ -1,0 +1,37 @@
+#!/bin/bash
+
+PACKAGES=("$@")
+
+cd ..
+RT=$PWD
+
+echo "$@"
+
+for NAME in ${PACKAGES[@]}
+do
+	cd $RT/uploads
+	
+	if [ -d $NAME ]
+	then
+		if [ -f $RT/VL7/archives/$NAME.tar.gz ]
+		then
+			mv $RT/VL7/archives/$NAME.tar.gz $RT/VL7/old/$NAME-old.tar.gz
+			rm -R $RT/VL7/data/$NAME
+		fi
+
+		tar -cvf - $NAME | gzip -c > $NAME.tar.gz
+		mv $NAME $RT/VL7/data
+		mv $NAME.tar.gz $RT/VL7/archives
+		cd $RT
+		git add VL7/data/$NAME/* VL7/archives/$NAME.tar.gz
+		MESSAGE=$MESSAGE" "$NAME
+	else
+		echo "No directory $NAME in uploads..."
+	fi
+done
+
+git commit -m "$MESSAGE"
+echo "done commit"
+git push origin master
+
+
