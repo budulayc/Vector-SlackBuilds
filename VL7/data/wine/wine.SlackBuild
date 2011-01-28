@@ -16,10 +16,10 @@
 # AUTHORS = 
 
 NAME="wine"            #Enter package Name!
-VERSION=${VERSION:-"1.3.11"}      #Enter package Version!
+VERSION=${VERSION:-"1.3.12"}      #Enter package Version!
 VER=$(echo $VERSION|sed 's/-/_/') #this fixes - in version
 VL_PACKAGER=${VL_PACKAGER:-"budulay"}   #Enter your Name!
-LINK=${LINK:-""}  #Enter URL for package here!
+LINK=${LINK:-"http://ibiblio.org/pub/linux/system/emulators/$NAME/$NAME-$VERSION.tar.bz2"}  #Enter URL for package here!
 
 
 #SYSTEM VARIABLES
