@@ -1,0 +1,3 @@
+wesnoth no longer supports autotools(configure/make/make install). Instead they switched to cmake and scons. 
+This script uses cmake.
+From a packaging perspective it does the same job as configure, just with different syntax.

@@ -1,0 +1,32 @@
+# HOW TO EDIT THIS FILE:
+# The "handy ruler" below makes it easier to edit a package description.  Line
+# up the first '|' above the ':' following the base package name, and the '|'
+# on the right side marks the last column you can put a character in.  You must
+# make exactly 11 lines for the formatting to be correct.  It's also
+# customary to leave one space after the ':'.
+
+       |-----handy-ruler------------------------------------------------------|
+wesnoth: wesnoth (Battle for Wesnoth is a fantasy turn-based strategy game)
+wesnoth:
+wesnoth: Battle for Wesnoth is a fantasy turn-based strategy game. Battle
+wesnoth: or control of villages, using variety of units which have advantages
+wesnoth: and disadvantages in different types of terrains and against
+wesnoth: different types of attacks. Units gain experience and advance levels,
+wesnoth: and are carried over from one scenario to the next campaign.
+wesnoth: 
+wesnoth: License: GPL 2.0
+wesnoth: Author:  David White <davidnwhite@comcast.net>
+wesnoth: Website: http://www.wesnoth.org/
+
+
+
+
+#----------------------------------------
+BUILDDATE: Sat Feb  5 22:28:40 CST 2011
+PACKAGER:  budulay
+HOST:      Linux 2.6.37 i686
+DISTRO:    7.0 STD Alpha 4.21 built on JAN-30-2011
+CFLAGS:    -O2 -march=i586 -mtune=i686 
+LDFLAGS:    
+CONFIGURE: 
+
